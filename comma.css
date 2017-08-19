@@ -1,13 +1,48 @@
 textarea {
-  height: 150px;
-  width: 300px;
+    font-family: 'Libre Baskerville', serif;  
+    font-size: 22px; 
+    height: 150px;
+    width: 500px;
+    display: block;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    overflow: auto;
+    outline: none;
+    caret-color: #e58b2b;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
-#console {
-  background-color: #444;
-  color: #eee;
-  margin: 10px 0;
-  min-height: 50px;
-  width: 300px;
-  border: 2px inset grey;
+.meter { 
+	height: 10px;  /* Can be anything */
+	position: relative;
+	background: #555;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	padding: 3px;
+	box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+}
+
+.meter > span {
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: rgb(43,194,83);
+  background-image: linear-gradient(
+    center bottom,
+    rgb(43,194,83) 37%,
+    rgb(84,240,84) 69%
+  );
+  box-shadow: 
+    inset 0 2px 9px  rgba(255,255,255,0.3),
+    inset 0 -2px 6px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
 }
