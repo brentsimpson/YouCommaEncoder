@@ -3,15 +3,19 @@
 var text = "We need walnuts, cinnamon, sugar, and milk.";
 var selectComma = ","; // this could be any punctuation you want
 var hits = [];
+var hits2 = [];
 var commaCheck;
 var commaPlacement;
 var progressBar = 0;
+var offset = 0;
+
 
 console.log("The sentence is " + text.length + " characters long.");
 
-for(i = 0 ; i<text.length ; i++){
+for(i = 0; i<text.length; i++){
 if(text[i] === selectComma){
-  commaPlace = i;
+  commaPlace = i - offset;
+  offset = offset + 1;
   hits.push(commaPlace);
 	}
 }
@@ -39,14 +43,17 @@ $( "#commabox" ).keypress(function( event ) {
             });
 
 /* this function checks if commas have been placed at the 
-right place in the string */
+right place in the string. Could probably use indexOf() here instead */
 function checkCommaPlacement() {
-    if (commaCheck === 44) {
-            for (var i = 0; i < commaNumber; i++) { 
-                if (hits[i] === commaPlacement) {
-                  console.log("Correct comma placement!")
-                  progressBar = progressBar + progressBarProgress
-                  $("#progressbardisplay").css('width', progressBar + "%");
-                } else {console.log("Incorrect placement.")} }                                 
-        } else { alert("That\'s not actually a comma.") }
+    a = hits.indexOf(commaPlacement);
+    if (commaCheck === 44 && a != -1) {
+        progressBar = progressBar + progressBarProgress
+        $("#progressbardisplay").css('width', progressBar + "%");
+        console.log("Comma is in array at " + a); } else {
+        console.log("Comma incorrecly placed.") }
+  
+        for (var i = a; i < commaNumber; i++){
+            hits[i] += 1; // updates the array places above comma
+          }                          
+
    };
