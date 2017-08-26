@@ -3,17 +3,17 @@
 function start() {
   
 var text = "We need walnuts, cinnamon, sugar, and milk.";  
+var newText;
 var selectComma = ","; // this could be any punctuation you want
 var hits = [];
 var commaCheck;
 var commaPlacement;
 var progressBar = 0;
 var offset = 0;
+  
+newText = text.replace(/,/g, '');
 
-var newText = text.replace(/,/g, '');
-
-$("#commabox").html(' ');
-$("#commabox").text(newText); //writes newText to textarea
+$("#commabox").val(newText); //writes newText to textarea
 $("#commanumber").text(commanumbertext);
 
 console.log("The sentence is " + text.length + " characters long.");
@@ -28,7 +28,7 @@ if(text[i] === selectComma){
 
 var commaNumber = hits.length;
 var commanumbertext = "There should be " + commaNumber + " commas in this sentence.";
-var progressBarProgress = Math.round(100 / hits.length);
+progressBarProgress = Math.round(100 / hits.length);
 $("#progressbardisplay").css('width', progressBar + "%"); // resets the progress bar
 
 console.log("Commas were placed at these characters: " + hits);
@@ -64,5 +64,6 @@ function checkCommaPlacement() {
 start();
 
 $( ".btn" ).click(function() {
+  $('#commabox').val('');
   start();
 });
